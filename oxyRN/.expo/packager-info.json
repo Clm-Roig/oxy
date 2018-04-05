@@ -1,8 +1,8 @@
 {
-  "expoServerPort": 19000,
-  "packagerPort": 19001,
-  "packagerPid": 29101,
-  "expoServerNgrokUrl": "https://yf-w29.clm-roig.oxyrn.exp.direct",
-  "packagerNgrokUrl": "https://packager.yf-w29.clm-roig.oxyrn.exp.direct",
-  "ngrokPid": 29144
+  "expoServerPort": null,
+  "packagerPort": null,
+  "packagerPid": null,
+  "expoServerNgrokUrl": null,
+  "packagerNgrokUrl": null,
+  "ngrokPid": null
 }
