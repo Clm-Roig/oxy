@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import Meteor, { createContainer } from 'react-native-meteor';
 
-import Meteor from 'react-native-meteor';
+
 const SERVER_URL = 'ws://192.168.1.66:3000/websocket';
 
-export default class App extends React.Component {
+class App extends Component {
 
     componentWillMount() {
         Meteor.connect(SERVER_URL);
@@ -21,19 +22,27 @@ export default class App extends React.Component {
     render() {
         return (
             <View style={styles.container}>
-
                 <Text style={styles.welcome}>
                     Welcome to React Native + Meteor Oxy App!
+                </Text>
+                <Text style={styles.instructions}>
+                    Item Count: {this.props.count}
                 </Text>
 
                 <TouchableOpacity style={styles.button} onPress={this.handleAddItem}>
                     <Text>Add Item</Text>
                 </TouchableOpacity>
-
             </View>
         );
     }
 }
+
+export default createContainer(() => {
+    Meteor.subscribe('items');
+    return {
+        count: Meteor.collection('items').find().length,
+    };
+}, App);
 
 const styles = StyleSheet.create({
     container: {
