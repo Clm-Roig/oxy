@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import Meteor, { createContainer } from 'react-native-meteor';
 
 // TODO : à changer avec sa propre IP
-const SERVER_URL = 'ws://192.168.1.66:3000/websocket';
+const SERVER_URL = 'ws://172.24.60.219:3000/websocket';
 
 class App extends Component {
 
@@ -23,7 +23,7 @@ class App extends Component {
         return (
             <View style={styles.container}>
                 <Text style={styles.welcome}>
-                    Welcome to React Native + Meteor Oxy App!
+                    Welcome to Oxy App!
                 </Text>
                 <Text style={styles.instructions}>
                     Item Count: {this.props.count}
