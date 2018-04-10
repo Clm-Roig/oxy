@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import Meteor, { createContainer } from 'react-native-meteor';
-
-// TODO : à changer avec sa propre IP
-const SERVER_URL = 'ws://172.24.60.219:3000/websocket';
+import * as Settings from './app/config/settings.js';
 
 class App extends Component {
 
     componentWillMount() {
-        Meteor.connect(SERVER_URL);
+        Meteor.connect(Settings.SERVER_URL);
     }
 
     handleAddItem() {
