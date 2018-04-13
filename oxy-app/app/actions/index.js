@@ -1,6 +1,6 @@
 export const DATA_AVAILABLE = 'DATA_AVAILABLE';
+export const ADD_ITEM = 'ADD_ITEM';
 
-export const LOAD_ACCOUNT = 'LOAD_ACCOUNT';
 //Import the sample data
 import Data from '../instructions.json';
 
@@ -18,13 +18,11 @@ export function getData(){
     };
 }
 
-export function getUser(){
+export function addItem(){
+    console.log("Action called")
     return (dispatch) => {
-
         //First test
-        const data  = "test";
-        dispatch({type: LOAD_ACCOUNT, data:data});
-
-
+        const data  = "newItem";
+        dispatch({type: ADD_ITEM, data:data});
     };
 }
