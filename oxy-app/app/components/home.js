@@ -13,7 +13,7 @@ import {
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import Meteor, { createContainer } from 'react-native-meteor';
-import * as Actions from '../actions'; //Import your actions
+import * as Actions from '../actions';
 
 // ================================================================
 
@@ -21,58 +21,31 @@ class Home extends Component {
     constructor(props) {
         super(props);
 
-        this.state = {
-        };
-
-        this.renderItem = this.renderItem.bind(this);
+        this.state = {};
     }
 
     componentDidMount() {
-        this.props.getData(); //call our action
-    }
 
+    }
 
     handleAddItem = () => {
         this.props.addItem()
     }
 
     render() {
-        if (this.props.loading) {
-            return (
-                <View style={styles.activityIndicatorContainer}>
-                <ActivityIndicator animating={true}/>
-                </View>
-            );
-        } else {
-            return (
-                <View style={{flex:1, backgroundColor: '#F5F5F5', paddingTop:20}}>
-
-                    <TouchableOpacity style={styles.button} onPress={this.handleAddItem}>
-                        <Text style={styles.textBig}>Add Item</Text>
-                    </TouchableOpacity>
-
-                    <FlatList
-                    ref='listRef'
-                    data={this.props.data}
-                    renderItem={this.renderItem}
-                    keyExtractor={(item, index) => index}/>
-
-                </View>
-            );
-        }
-    }
-
-    renderItem({item, index}) {
         return (
-            <View style={styles.row}>
-            <Text style={styles.title}>
-            {(parseInt(index) + 1)}{". "}{item.title}
-            </Text>
-            <Text style={styles.description}>
-            {item.description}
-            </Text>
+            <View style={{flex:1, backgroundColor: '#F5F5F5', paddingTop:20}}>
+
+                <TouchableOpacity style={styles.button} onPress={this.handleAddItem}>
+                    <Text style={styles.textBig}>Add Item</Text>
+                </TouchableOpacity>
+
+                <Text style={styles.textBig}>
+                    Item Count: {this.props.count}
+                </Text>
+
             </View>
-        )
+        );
     }
 };
 
@@ -116,21 +89,7 @@ const styles = StyleSheet.create({
         backgroundColor: "#d55",
         height: 80
     },
-    row:{
-        borderBottomWidth: 1,
-        borderColor: "#ccc",
-        padding: 10
-    },
     textBig: {
         fontSize: 30
-    },
-    title:{
-        fontSize: 15,
-        fontWeight: "600"
-    },
-
-    description:{
-        marginTop: 5,
-        fontSize: 14,
     }
 });
