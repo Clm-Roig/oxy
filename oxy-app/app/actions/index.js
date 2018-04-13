@@ -1,5 +1,6 @@
 export const DATA_AVAILABLE = 'DATA_AVAILABLE';
 
+export const LOAD_ACCOUNT = 'LOAD_ACCOUNT';
 //Import the sample data
 import Data from '../instructions.json';
 
@@ -13,6 +14,17 @@ export function getData(){
             const data  = Data.instructions;
             dispatch({type: DATA_AVAILABLE, data:data});
         }, 2000);
+
+    };
+}
+
+export function getUser(){
+    return (dispatch) => {
+
+        //First test
+        const data  = "test";
+        dispatch({type: LOAD_ACCOUNT, data:data});
+
 
     };
 }
