@@ -9,6 +9,9 @@ const dataReducer = (state = dataState, action) => {
         case DATA_AVAILABLE:
             state = Object.assign({}, state, { data: action.data, loading:false });
             return state;
+        case LOAD_ACCOUNT:
+            state = Object.assign({}, state, { data: "Account loaded", loading: false});
+            return state;
         default:
             return state;
     }

@@ -1,9 +1,16 @@
 import React, { Component } from 'react';
 import { Provider } from 'react-redux';
 
-import store from './app/store'; //Import the store
-import Home from './app/components/home' //Import the component file
-import Account from './app/components/account' //Import the component file
+import store from './app/store'
+import Home from './app/components/home'
+import Account from './app/components/account'
+
+import Meteor from 'react-native-meteor';
+import * as Settings from './app/config/settings.js';
+
+// ====================================7
+Meteor.connect(Settings.SERVER_URL)
+
 
 export default class App extends Component {
     render() {

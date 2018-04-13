@@ -9,10 +9,12 @@ import {
     ActivityIndicator
 } from 'react-native';
 
-import {bindActionCreators} from 'redux';
+import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-
+import Meteor, { createContainer } from 'react-native-meteor';
 import * as Actions from '../actions'; //Import your actions
+
+// ================================================================
 
 class Home extends Component {
     constructor(props) {
@@ -64,6 +66,7 @@ class Home extends Component {
 
 
 
+
 // The function takes data from the app current state,
 // and insert/links it into the props of our component.
 // This function makes Redux know that this component needs to be passed a piece of the state
@@ -81,8 +84,15 @@ function mapDispatchToProps(dispatch) {
     return bindActionCreators(Actions, dispatch);
 }
 
-//Connect everything
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+// Connect everything
+let connection = connect(mapStateToProps, mapDispatchToProps)(Home);
+
+export default createContainer(() => {
+    Meteor.subscribe('items');
+    return {
+        count: Meteor.collection('items').find().length,
+    };
+}, connection);
 
 const styles = StyleSheet.create({
     activityIndicatorContainer:{
