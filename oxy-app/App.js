@@ -9,7 +9,7 @@ import Meteor from 'react-native-meteor';
 import * as Settings from './app/config/settings.js';
 
 // ==================================== //
-Meteor.connect(Settings.SERVER_URL)
+Meteor.connect(Settings.SERVER_URL);
 
 
 export default class App extends Component {

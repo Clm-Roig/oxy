@@ -16,7 +16,7 @@ import * as Actions from '../actions';
 
 // ================================================================
 type Props = {
-    count: number,
+    count: number
 }
 
 type State = {
@@ -33,7 +33,7 @@ class Home extends Component<Props, State> {
     }
 
     handleAddItem = () => {
-        this.props.addItem()
+        this.props.addItem();
     }
 
     render() {

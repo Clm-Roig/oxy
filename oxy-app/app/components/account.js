@@ -33,12 +33,12 @@ class Home extends Component<Props, State> {
     }
 
     constructor(props) {
-        super(props)
+        super(props);
     }
 
     onPressAccount = () => {
-        this.setState({ isShownBtn: true })
-    };
+        this.setState({ isShownBtn: true });
+    }
 
     render() {
         if (this.state.loading) {
@@ -96,5 +96,5 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         flex: 1,
-    },
+    }
 });
