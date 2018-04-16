@@ -18,7 +18,7 @@
     "android": "react-native-scripts android",
     "ios": "react-native-scripts ios",
     "test": "jest",
-    "build": "babel src/ -d lib/",
+    "build": "babel app/ -d lib/",
     "prepublish": "npm run build"
   },
   "jest": {
