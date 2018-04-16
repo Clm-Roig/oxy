@@ -1,3 +1,5 @@
+// @flow
+
 import React, { Component } from 'react';
 import {
     StyleSheet,
@@ -8,77 +10,61 @@ import {
     ActivityIndicator
 } from 'react-native';
 
-
 import {bindActionCreators} from 'redux';
 import { connect } from 'react-redux';
 
-import * as Actions from '../actions'; //Import your actions
+import * as Actions from '../actions';
 
-class Home extends Component {
+// =============================================================
 
+type Props = {}
+
+type State = {
+    isShownBtn: boolean,
+    loading: boolean,
+    data: any
+}
+
+class Home extends Component<Props, State> {
+    state = {
+        isShownBtn: false,
+        loading: false,
+        data: null
+    }
 
     constructor(props) {
-        super(props);
-
-        this.state = {
-        };
-
-        this.btn = false;
-
-
-        this.renderItem = this.renderItem.bind(this);
+        super(props)
     }
 
-    componentDidMount() {
-        this.props.getData(); //call our action
-    }
-
-    onPressAccount(){
-        this.btn = true;
-        this.render();
-    }
+    onPressAccount = () => {
+        this.setState({ isShownBtn: true })
+    };
 
     render() {
-        if (this.props.loading) {
+        if (this.state.loading) {
             return (
                 <View style={styles.activityIndicatorContainer}>
                     <ActivityIndicator animating={true}/>
                 </View>
             );
-        } else if(this.btn) {
-            <View style={{flex:1, backgroundColor: '#D3D3D3', paddingTop:20}}>
-                <Text>Hello World</Text>
-            </View>
+        } else if(this.state.isShownBtn) {
+            return (
+                <View style={{flex:1, backgroundColor: '#D3D3D3', paddingTop:20}}>
+                    <Text>Hello World</Text>
+                </View>
+            )
         } else {
             return (
                 <View style={{flex:1, backgroundColor: '#F5F5F5', paddingTop:20}}>
-                    <Button
-                        onPress={this.onPressAccount}
-                        title="Account"
-                        color="#841584"
-                        accessibilityLabel="Learn more about this purple button"
-                    />
-                    <FlatList
-                        ref='listRef'
-                        data={this.props.data}
-                        renderItem={this.renderItem}
-                        keyExtractor={(item, index) => index}/>
+                <Button
+                    onPress={this.onPressAccount}
+                    title="Account"
+                    color="#841584"
+                    accessibilityLabel="Learn more about this purple button"
+                />
                 </View>
             );
         }
-    }
-
-    renderItem({item, index}) {
-        return (
-            <View style={styles.row}>
-                <Text style={styles.title}>
-                    {(parseInt(index) + 1)}{". "}{item.title}
-                </Text>
-                <Text style={styles.description}>
-                    {item.description}
-                </Text>
-            </View>
-        )
     }
 };
 
@@ -104,8 +90,6 @@ function mapDispatchToProps(dispatch) {
 //Connect everything
 export default connect(mapStateToProps, mapDispatchToProps)(Home);
 
-
-
 const styles = StyleSheet.create({
     activityIndicatorContainer:{
         backgroundColor: "#fff",
@@ -113,20 +97,4 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         flex: 1,
     },
-
-    row:{
-        borderBottomWidth: 1,
-        borderColor: "#ccc",
-        padding: 10
-    },
-
-    title:{
-        fontSize: 15,
-        fontWeight: "600"
-    },
-
-    description:{
-        marginTop: 5,
-        fontSize: 14,
-    }
 });

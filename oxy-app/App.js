@@ -8,7 +8,7 @@ import Account from './app/components/account'
 import Meteor from 'react-native-meteor';
 import * as Settings from './app/config/settings.js';
 
-// ====================================7
+// ==================================== //
 Meteor.connect(Settings.SERVER_URL)
 
 
@@ -16,7 +16,7 @@ export default class App extends Component {
     render() {
         return (
             <Provider store={store}>
-                <Home />
+                <Account />
             </Provider>
         );
     }
