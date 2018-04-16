@@ -1,9 +1,9 @@
-import { combineReducers } from 'redux';
+import { combineReducers } from 'redux'
 
-import { ADD_ITEM } from "../actions/" //Import the actions types constant we defined in our actions
-import Meteor from 'react-native-meteor';
+import { ADD_ITEM } from "../actions/"
+import Meteor from 'react-native-meteor'
 
-let dataState = { data: [], loading:true };
+let dataState = { data: [], loading:true }
 
 const dataReducer = (state = dataState, action) => {
     switch (action.type) {

@@ -1,5 +1,4 @@
-'use strict';
-
+//@flow
 import React, { Component } from 'react';
 import {
     StyleSheet,
@@ -16,12 +15,17 @@ import Meteor, { createContainer } from 'react-native-meteor';
 import * as Actions from '../actions';
 
 // ================================================================
+type Props = {
+    count: number,
+}
 
-class Home extends Component {
+type State = {
+
+}
+
+class Home extends Component<Props, State> {
     constructor(props) {
         super(props);
-
-        this.state = {};
     }
 
     componentDidMount() {
@@ -48,8 +52,6 @@ class Home extends Component {
         );
     }
 };
-
-
 
 // The function takes data from the app current state,
 // and insert/links it into the props of our component.
