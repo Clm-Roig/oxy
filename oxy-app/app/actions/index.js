@@ -1,9 +1,8 @@
-export const ADD_ITEM = 'ADD_ITEM';
+export const ADD_SANDWICH = 'ADD_SANDWICH';
 
-export function addItem(){
-    console.log("Action ADD ITEM called")
+export function addSandwich(){
     return (dispatch) => {
-        const data  = "newItem";
-        dispatch({type: ADD_ITEM, data:data});
+        const data  = "newSandwich";
+        dispatch({type: ADD_SANDWICH, data:data});
     };
 }

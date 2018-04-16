@@ -1,18 +1,18 @@
 import { combineReducers } from 'redux'
 
-import { ADD_ITEM } from "../actions/"
+import { ADD_SANDWICH } from "../actions/"
 import Meteor from 'react-native-meteor'
 
 let dataState = { data: [], loading:true }
 
 const dataReducer = (state = dataState, action) => {
     switch (action.type) {
-        case ADD_ITEM:
+        case ADD_SANDWICH:
             const name = action.data + Math.floor(Math.random() * 10); // just generate some random number
-            Meteor.call('Items.addOne', { name }, (err, res) => {
-                console.log('Items.addOne', err, res);
+            Meteor.call('Sandwiches.addOne', { name }, (err, res) => {
+                console.log('Sandwiches.addOne', err, res);
             });
-            console.log("item inserted")
+            console.log("Sandwich inserted")
             return state;
 
         default:

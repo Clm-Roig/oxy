@@ -11,7 +11,7 @@ import {
 
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import Meteor, { createContainer } from 'react-native-meteor';
+import Meteor, { createContainer, MeteorListView } from 'react-native-meteor';
 import * as Actions from '../actions';
 
 // ================================================================
@@ -33,7 +33,7 @@ class Home extends Component<Props, State> {
     }
 
     handleAddItem = () => {
-        this.props.addItem();
+        this.props.addSandwich();
     }
 
     render() {
@@ -45,11 +45,22 @@ class Home extends Component<Props, State> {
                 </TouchableOpacity>
 
                 <Text style={styles.textBig}>
-                    Item Count: {this.props.count}
+                    Nb de sandwichs: {this.props.count}
                 </Text>
+
+                <MeteorListView
+                    collection="sandwiches"
+                    renderRow={this.renderSandwich}
+                />
 
             </View>
         );
+    }
+
+    renderSandwich(sandwich) {
+        return (
+            <Text>{sandwich.name}</Text>
+        )
     }
 };
 
@@ -74,9 +85,9 @@ function mapDispatchToProps(dispatch) {
 let connection = connect(mapStateToProps, mapDispatchToProps)(Home);
 
 export default createContainer(() => {
-    Meteor.subscribe('items');
+    Meteor.subscribe('sandwiches');
     return {
-        count: Meteor.collection('items').find().length,
+        count: Meteor.collection('sandwiches').find().length,
     };
 }, connection);
 
