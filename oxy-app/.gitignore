@@ -11,6 +11,7 @@
 .env.development.local
 .env.test.local
 .env.production.local
+
 /app/config/settings.js
 
 npm-debug.log*
