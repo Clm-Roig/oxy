@@ -5,15 +5,15 @@ import {
     FlatList,
     View,
     Text,
-    ActivityIndicator,
     TouchableOpacity
 } from 'react-native';
 
+import {MyButton} from '../components/MyButton';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import Meteor, { createContainer, MeteorListView } from 'react-native-meteor';
-import * as Actions from '../actions';
 
+import * as Actions from '../actions';
 import * as Style from '../assets/style';
 
 // ================================================================
@@ -42,9 +42,7 @@ class Home extends Component<Props, State> {
         return (
             <View style={{flex:1, backgroundColor: '#F5F5F5', paddingTop:20}}>
 
-                <TouchableOpacity style={Style.button} onPress={this.handleAddItem}>
-                    <Text style={Style.textBig}>Add Item</Text>
-                </TouchableOpacity>
+                <MyButton handler={this.handleAddItem} text='Add Sandwich' />
 
                 <Text style={Style.textBig}>
                     Nb de sandwichs: {this.props.count}
