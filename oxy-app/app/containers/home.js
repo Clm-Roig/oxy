@@ -8,7 +8,7 @@ import {
     TouchableOpacity
 } from 'react-native';
 
-import { MyButton } from '../components/MyButton';
+import { MyButton } from '../components/myButton';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import Meteor, { createContainer, MeteorListView } from 'react-native-meteor';
