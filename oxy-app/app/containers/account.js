@@ -25,7 +25,7 @@ type State = {
     data: any
 }
 
-class Home extends Component<Props, State> {
+class Account extends Component<Props, State> {
     state = {
         isShownBtn: false,
         loading: false,
@@ -88,7 +88,7 @@ function mapDispatchToProps(dispatch) {
 }
 
 //Connect everything
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default connect(mapStateToProps, mapDispatchToProps)(Account);
 
 const styles = StyleSheet.create({
     activityIndicatorContainer:{
