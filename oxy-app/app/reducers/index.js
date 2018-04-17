@@ -8,7 +8,7 @@ let dataState = { data: [], loading:true }
 const dataReducer = (state = dataState, action) => {
     switch (action.type) {
         case ADD_SANDWICH:
-            const name = action.data + Math.floor(Math.random() * 10); // just generate some random number
+            const name = action.data + Math.floor(Math.random() * 10);
             Meteor.call('Sandwiches.addOne', { name }, (err, res) => {
                 console.log('Sandwiches.addOne', err, res);
             });

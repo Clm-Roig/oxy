@@ -14,6 +14,8 @@ import { connect } from 'react-redux';
 import Meteor, { createContainer, MeteorListView } from 'react-native-meteor';
 import * as Actions from '../actions';
 
+import * as Style from '../assets/style';
+
 // ================================================================
 type Props = {
     count: number
@@ -40,11 +42,11 @@ class Home extends Component<Props, State> {
         return (
             <View style={{flex:1, backgroundColor: '#F5F5F5', paddingTop:20}}>
 
-                <TouchableOpacity style={styles.button} onPress={this.handleAddItem}>
-                    <Text style={styles.textBig}>Add Item</Text>
+                <TouchableOpacity style={Style.button} onPress={this.handleAddItem}>
+                    <Text style={Style.textBig}>Add Item</Text>
                 </TouchableOpacity>
 
-                <Text style={styles.textBig}>
+                <Text style={Style.textBig}>
                     Nb de sandwichs: {this.props.count}
                 </Text>
 
@@ -90,19 +92,3 @@ export default createContainer(() => {
         count: Meteor.collection('sandwiches').find().length,
     };
 }, connection);
-
-const styles = StyleSheet.create({
-    activityIndicatorContainer:{
-        backgroundColor: "#fff",
-        alignItems: 'center',
-        justifyContent: 'center',
-        flex: 1,
-    },
-    button:{
-        backgroundColor: "#d55",
-        height: 80
-    },
-    textBig: {
-        fontSize: 30
-    }
-});
