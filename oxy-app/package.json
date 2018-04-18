@@ -28,7 +28,6 @@
     "expo": "^26.0.0",
     "react": "16.3.1",
     "react-native": "https://github.com/expo/react-native/archive/sdk-26.0.0.tar.gz",
-    "react-native-form-builder": "^1.0.13",
     "react-native-meteor": "^1.2.0",
     "react-redux": "^5.0.7",
     "redux": "^3.7.2",

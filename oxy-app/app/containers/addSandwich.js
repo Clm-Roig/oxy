@@ -13,8 +13,6 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import Meteor, { createContainer } from 'react-native-meteor';
 
-import GenerateForm from 'react-native-form-builder';
-
 import * as Actions from '../actions';
 import * as Style from '../assets/style';
 
@@ -27,32 +25,6 @@ type State = {
 
 }
 
-// Champs du formulaire
-const fields = [
-    {
-        type: 'text',
-        name: 'user_name',
-        required: true,
-        icon: 'ios-person',
-        label: 'Username',
-    },
-    {
-        type: 'password',
-        name: 'password',
-        icon: 'ios-lock',
-        required: true,
-        label: 'Password',
-    },
-    {
-        type: 'picker',
-        name: 'country',
-        mode: 'dialog',
-        label: 'Select Country',
-        defaultValue: 'INDIA',
-        options: ['US', 'INDIA', 'UK', 'CHINA', 'FRANCE'],
-    },
-];
-
 class AddSandwich extends Component<Props, State> {
     constructor(props) {
         super(props);
@@ -62,9 +34,7 @@ class AddSandwich extends Component<Props, State> {
 
     }
 
-    handleAddItem = () => {
-        const formValues = this.props.form.getValues();
-        console.log('FORM VALUES', formValues);
+    handleAddSandwich = () => {
         //this.props.addSandwich();
     }
 
@@ -75,12 +45,7 @@ class AddSandwich extends Component<Props, State> {
                     Ajouter un nouveau sandwich
                 </Text>
 
-                <GenerateForm
-                    ref={ (c) => { this.props.form = c; }}
-                    fields={fields}
-                />
-
-                <MyButton handler={this.handleAddItem} text='Ajouter un sandwich' />
+                <MyButton handler={this.handleAddSandwich} text='Ajouter un sandwich' />
 
             </View>
         );
