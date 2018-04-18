@@ -11,9 +11,9 @@ import Account from './containers/account';
 
 // drawer stack
 const DrawerStack = DrawerNavigator({
-    screen1: { screen: Login },
-    screen2: { screen: Home },
-    screen3: { screen: Account },
+    Home: { screen: Home },
+    Account: { screen: Account },
+    Login: { screen: Login }
 })
 
 const DrawerNavigation = StackNavigator({
@@ -21,32 +21,20 @@ const DrawerNavigation = StackNavigator({
 }, {
     headerMode: 'float',
     navigationOptions: ({navigation}) => ({
-        headerStyle: {backgroundColor: 'green'},
-        title: 'Logged In to your app!',
+        headerStyle: {backgroundColor: '#a2a'},
+        title: 'Oxy',
         headerLeft: <Text onPress={() => navigation.navigate('DrawerOpen')}>Menu</Text>
     })
 })
 
-// login stack
-const LoginStack = StackNavigator({
-    loginScreen: { screen: Login }
-}, {
-    headerMode: 'float',
-    navigationOptions: {
-        headerStyle: {backgroundColor: 'red'},
-        title: 'You are not logged in'
-    }
-})
-
 // Manifest of possible screens
 const PrimaryNav = StackNavigator({
-    loginStack: { screen: LoginStack },
     drawerStack: { screen: DrawerNavigation }
 }, {
     // Default config for all screens
     headerMode: 'none',
     title: 'Main',
-    initialRouteName: 'loginStack'
+    initialRouteName: 'drawerStack'
 })
 
 export default PrimaryNav;

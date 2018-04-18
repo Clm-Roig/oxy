@@ -7,7 +7,7 @@ import Account from './app/containers/account';
 import AddSandwich from './app/containers/addSandwich';
 import Login from './app/containers/login';
 
-//import AppNavigation from './app/AppNavigation';
+import AppNavigation from './app/AppNavigation';
 
 import Meteor from 'react-native-meteor';
 import * as Settings from './app/config/settings.js';
@@ -15,12 +15,11 @@ import * as Settings from './app/config/settings.js';
 // ==================================== //
 Meteor.connect(Settings.SERVER_URL);
 
-
 export default class App extends Component {
     render() {
         return (
             <Provider store={store}>
-                <Home />
+                <AppNavigation />
             </Provider>
         );
     }

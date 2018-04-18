@@ -26,6 +26,10 @@ type State = {
 }
 
 class Home extends Component<Props, State> {
+    static navigationOptions = {
+        drawerLabel: 'Accueil'
+    }
+
     constructor(props) {
         super(props);
     }
@@ -42,16 +46,16 @@ class Home extends Component<Props, State> {
         return (
             <View style={{flex:1, backgroundColor: '#F5F5F5', paddingTop:20}}>
 
-                <MyButton handler={this.handleAddItem} text='Add Sandwich' />
+            <MyButton handler={this.handleAddItem} text='Add Sandwich' />
 
-                <Text style={Style.textBig}>
-                    Nb de sandwichs: {this.props.count}
-                </Text>
+            <Text style={Style.textBig}>
+            Nb de sandwichs: {this.props.count}
+            </Text>
 
-                <MeteorListView
-                    collection="sandwiches"
-                    renderRow={this.renderSandwich}
-                />
+            <MeteorListView
+            collection="sandwiches"
+            renderRow={this.renderSandwich}
+            />
 
             </View>
         );
