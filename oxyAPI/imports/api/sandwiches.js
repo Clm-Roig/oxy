@@ -7,6 +7,9 @@ Meteor.methods({
     'Sandwiches.addOne': ({ name }) => {
         return Sandwiches.insert({ name });
     },
+    'Sandwiches.deleteAll': () => {
+        return Sandwiches.remove({});
+    }
 });
 
 Meteor.publish('sandwiches', () => {

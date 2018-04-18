@@ -18,7 +18,7 @@ import * as Style from '../assets/style';
 
 // ================================================================
 type Props = {
-    count: number
+    sandwiches: []
 }
 
 type State = {
@@ -38,14 +38,23 @@ class Home extends Component<Props, State> {
         this.props.addSandwich();
     }
 
+    handleDeleteSandwiches = () => {
+        this.props.deleteSandwiches();
+    }
+
     render() {
+        var count = 0;
+        if(this.props.sandwiches != null) {
+             count = this.props.sandwiches.length;
+        }
         return (
             <View style={{flex:1, backgroundColor: '#F5F5F5'}}>
 
             <MyButton handler={this.handleAddItem} text='Add Sandwich' />
+            <MyButton handler={this.handleDeleteSandwiches} text='Delete all Sandwiches' />
 
             <Text style={Style.textBig}>
-            Nb de sandwichs: {this.props.count}
+            Nb de sandwichs: {count}
             </Text>
 
             <MeteorListView
@@ -87,6 +96,6 @@ let connection = connect(mapStateToProps, mapDispatchToProps)(Home);
 export default createContainer(() => {
     Meteor.subscribe('sandwiches');
     return {
-        count: Meteor.collection('sandwiches').find().length,
+        sandwiches: Meteor.collection('sandwiches').find(),
     };
 }, connection);

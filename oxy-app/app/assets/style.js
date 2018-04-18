@@ -1,11 +1,11 @@
 export const button = {
     alignItems: 'center',
-    backgroundColor: '#e66',
+    backgroundColor: '#66e',
     height: 80
 }
 
 export const textBig = {
-    fontSize: 30
+    fontSize: 25
 }
 
 export const textMenu = {

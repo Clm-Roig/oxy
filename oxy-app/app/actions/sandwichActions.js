@@ -3,6 +3,7 @@ import Meteor from 'react-native-meteor'
 // =============================================
 
 export const ADD_SANDWICH = 'ADD_SANDWICH';
+export const DELETE_SANDWICHES = 'DELETE_SANDWICHES';
 
 export function addSandwich(){
     return (dispatch) => {
@@ -15,5 +16,18 @@ export function addSandwich(){
             console.log('Sandwiches.addOne', err, res);
         });
         console.log("Sandwich inserted");
+    };
+}
+
+export function deleteSandwiches(){
+    return (dispatch) => {
+        const data  = '';
+        dispatch({type: DELETE_SANDWICHES, data:data});
+
+        // CALL API
+        Meteor.call('Sandwiches.deleteAll', { data }, (err, res) => {
+            console.log('Sandwiches.deleteAll', err, res);
+        });
+        console.log("Sandwiches deleted");
     };
 }
