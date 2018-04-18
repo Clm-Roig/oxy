@@ -10,6 +10,10 @@ export function addSandwich(){
         dispatch({type: ADD_SANDWICH, data:data});
 
         // CALL API
-
+        const name = data + Math.floor(Math.random() * 100);
+        Meteor.call('Sandwiches.addOne', { name }, (err, res) => {
+            console.log('Sandwiches.addOne', err, res);
+        });
+        console.log("Sandwich inserted");
     };
 }

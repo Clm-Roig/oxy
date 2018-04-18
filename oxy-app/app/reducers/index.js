@@ -8,13 +8,11 @@ let dataState = { data: [], loading:true }
 const dataReducer = (state = dataState, action) => {
     switch (action.type) {
         case ADD_SANDWICH:
-            const name = action.data + Math.floor(Math.random() * 100);
-            Meteor.call('Sandwiches.addOne', { name }, (err, res) => {
-                console.log('Sandwiches.addOne', err, res);
-            });
-            console.log("Sandwich inserted")
-            return state;
+            // TODO : add sandwich to the state
 
+
+
+            return state;
         default:
             return state;
     }
