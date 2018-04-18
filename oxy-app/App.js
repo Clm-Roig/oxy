@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import { Provider } from 'react-redux';
 
-import store from './app/store'
-import Home from './app/containers/home'
-import Account from './app/containers/account'
-import AddSandwich from './app/containers/addSandwich'
+import store from './app/store';
+import Home from './app/containers/home';
+import Account from './app/containers/account';
+import AddSandwich from './app/containers/addSandwich';
+import Login from './app/containers/login';
 
+//import AppNavigation from './app/AppNavigation';
 
 import Meteor from 'react-native-meteor';
 import * as Settings from './app/config/settings.js';
