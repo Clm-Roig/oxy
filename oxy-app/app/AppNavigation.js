@@ -2,7 +2,7 @@
 // Basé sur ce tutoriel : https://shift.infinite.red/react-navigation-drawer-tutorial-a802fc3ee6dc
 import React from 'react';
 import { Text } from 'react-native';
-
+import { Icon } from 'react-native-elements';
 import { StackNavigator, DrawerNavigator } from 'react-navigation';
 import Login from './containers/login';
 import Home from './containers/home';
@@ -23,13 +23,13 @@ const DrawerNavigation = StackNavigator({
         headerStyle: {backgroundColor: '#559'},
         title: 'Oxy',
         headerLeft:
-            <Text onPress= { () => {
+            <Icon name="menu" size={40} onPress= { () => {
                 if (navigation.state.index === 0) {
                     navigation.navigate('DrawerOpen')
                 } else {
                     navigation.navigate('DrawerClose')
                 }
-            }}>Menu</Text>
+            }} />
     })
 });
 
