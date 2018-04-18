@@ -12,12 +12,19 @@ import {
 
 import {bindActionCreators} from 'redux';
 import { connect } from 'react-redux';
+import Meteor, { createContainer, MeteorListView } from 'react-native-meteor';
+
+
+import { MenuButton } from '../components/menuButton';
 
 import * as Actions from '../actions';
+import * as Style from '../assets/style';
 
 // =============================================================
 
-type Props = {}
+type Props = {
+    count:number
+}
 
 type State = {
     isShownBtn: boolean,
@@ -27,7 +34,7 @@ type State = {
 
 class Account extends Component<Props, State> {
     state = {
-        isShownBtn: false,
+        isShownBtn: true,
         loading: false,
         data: null
     }
@@ -37,7 +44,11 @@ class Account extends Component<Props, State> {
     }
 
     onPressAccount = () => {
-        this.setState({ isShownBtn: true });
+        this.setState({ isShownBtn: false });
+    }
+
+    onPressSandwish = () => {
+        this.setState({ isShownBtn: false });
     }
 
     render() {
@@ -50,22 +61,36 @@ class Account extends Component<Props, State> {
         } else if(this.state.isShownBtn) {
             return (
                 <View style={{flex:1, backgroundColor: '#D3D3D3'}}>
-                    <Text>Hello World</Text>
+                    <Text style={Style.title}>Faites votre choix</Text>
+                    <MeteorListView
+                        collection="sandwiches"
+                        renderRow={this.renderSandwich}
+                    />
                 </View>
             )
         } else {
             return (
-                <View style={{flex:1, backgroundColor: '#F5F5F5', paddingTop:20}}>
-                <Button
-                    onPress={this.onPressAccount}
-                    title="Account"
-                    color="#841584"
-                    accessibilityLabel="Learn more about this purple button"
-                />
+                <View style={{flex:1, backgroundColor: '#F5F5F5', paddingTop:50}}>
+                    <Button
+                        onPress={this.onPressAccount}
+                        title="Access the menu"
+                        color="#841584"
+                        accessibilityLabel="Learn more about this purple button"
+                    />
                 </View>
             );
         }
     }
+
+    renderSandwich(sandwich) {
+        return (
+            <MenuButton
+            onPress={this.onPressAccount}
+            text={sandwich.name}
+            />
+        )
+    }
+
 };
 
 
@@ -86,9 +111,23 @@ function mapStateToProps(state, props) {
 function mapDispatchToProps(dispatch) {
     return bindActionCreators(Actions, dispatch);
 }
+// Doing this merges our actions into the component’s props,
+// while wrapping them in dispatch() so that they immediately dispatch an Action.
+// Just by doing this, we will have access to the actions defined in out actions file (action/home.js)
+function mapDispatchToProps(dispatch) {
+    return bindActionCreators(Actions, dispatch);
+}
 
-//Connect everything
-export default connect(mapStateToProps, mapDispatchToProps)(Account);
+// Connect everything
+let connection = connect(mapStateToProps, mapDispatchToProps)(Account);
+
+export default createContainer(() => {
+    Meteor.subscribe('sandwiches');
+    return {
+        count: Meteor.collection('sandwiches').find().length,
+    };
+}, connection);
+
 
 const styles = StyleSheet.create({
     activityIndicatorContainer:{
