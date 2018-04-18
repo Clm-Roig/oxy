@@ -120,12 +120,6 @@ function mapStateToProps(state, props) {
 function mapDispatchToProps(dispatch) {
     return bindActionCreators(Actions, dispatch);
 }
-// Doing this merges our actions into the component’s props,
-// while wrapping them in dispatch() so that they immediately dispatch an Action.
-// Just by doing this, we will have access to the actions defined in out actions file (action/home.js)
-function mapDispatchToProps(dispatch) {
-    return bindActionCreators(Actions, dispatch);
-}
 
 // Connect everything
 let connection = connect(mapStateToProps, mapDispatchToProps)(Menu);
