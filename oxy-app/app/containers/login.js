@@ -11,6 +11,7 @@ import { MyButton } from '../components/myButton';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import Meteor, { createContainer, MeteorListView } from 'react-native-meteor';
+
 import { withNavigation } from 'react-navigation';
 
 import * as Actions from '../actions/sandwichActions';
@@ -70,6 +71,6 @@ function mapDispatchToProps(dispatch) {
     return bindActionCreators(Actions, dispatch);
 }
 
-
 // Connect everything
-export default withNavigation(connect(mapStateToProps, mapDispatchToProps)(Login));
+let connection = connect(mapStateToProps, mapDispatchToProps)(Login);
+export default withNavigation(connection);
