@@ -26,10 +26,6 @@ type State = {
 }
 
 class Home extends Component<Props, State> {
-    static navigationOptions = {
-        drawerLabel: 'Accueil'
-    }
-
     constructor(props) {
         super(props);
     }

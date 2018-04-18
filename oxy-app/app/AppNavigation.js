@@ -1,6 +1,5 @@
 //@flow
 // Basé sur ce tutoriel : https://shift.infinite.red/react-navigation-drawer-tutorial-a802fc3ee6dc
-
 import React from 'react';
 import { Text } from 'react-native';
 
@@ -11,21 +10,28 @@ import Account from './containers/account';
 
 // drawer stack
 const DrawerStack = DrawerNavigator({
-    Home: { screen: Home },
-    Account: { screen: Account },
-    Login: { screen: Login }
-})
+    'Accueil': { screen: Home },
+    'Compte': { screen: Account },
+    'S\'identifier': { screen: Login }
+});
 
 const DrawerNavigation = StackNavigator({
     DrawerStack: { screen: DrawerStack }
 }, {
     headerMode: 'float',
     navigationOptions: ({navigation}) => ({
-        headerStyle: {backgroundColor: '#a2a'},
+        headerStyle: {backgroundColor: '#559'},
         title: 'Oxy',
-        headerLeft: <Text onPress={() => navigation.navigate('DrawerOpen')}>Menu</Text>
+        headerLeft:
+            <Text onPress= { () => {
+                if (navigation.state.index === 0) {
+                    navigation.navigate('DrawerOpen')
+                } else {
+                    navigation.navigate('DrawerClose')
+                }
+            }}>Menu</Text>
     })
-})
+});
 
 // Manifest of possible screens
 const PrimaryNav = StackNavigator({
@@ -35,6 +41,6 @@ const PrimaryNav = StackNavigator({
     headerMode: 'none',
     title: 'Main',
     initialRouteName: 'drawerStack'
-})
+});
 
 export default PrimaryNav;
