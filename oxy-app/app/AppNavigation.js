@@ -35,7 +35,10 @@ const DrawerNavigation = StackNavigator({
 
 // Manifest of possible screens
 const PrimaryNav = StackNavigator({
-    drawerStack: { screen: DrawerNavigation }
+    drawerStack: { screen: DrawerNavigation },
+    Accueil: { screen: Home },
+    Menu: { screen: Menu },
+    Login : { screen: Login }
 }, {
     // Default config for all screens
     headerMode: 'none',

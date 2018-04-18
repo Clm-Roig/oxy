@@ -11,6 +11,7 @@ import { MyButton } from '../components/myButton';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import Meteor, { createContainer, MeteorListView } from 'react-native-meteor';
+import { withNavigation } from 'react-navigation';
 
 import * as Actions from '../actions/sandwichActions';
 import * as Style from '../assets/style';
@@ -34,7 +35,7 @@ class Login extends Component<Props, State> {
     }
 
     handleLogin = () => {
-
+        this.props.navigation.navigate('Menu');
     }
 
     render() {
@@ -69,5 +70,6 @@ function mapDispatchToProps(dispatch) {
     return bindActionCreators(Actions, dispatch);
 }
 
+
 // Connect everything
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
+export default withNavigation(connect(mapStateToProps, mapDispatchToProps)(Login));
