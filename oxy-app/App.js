@@ -3,7 +3,7 @@ import { Provider } from 'react-redux';
 
 import store from './app/store';
 import Home from './app/containers/home';
-import Account from './app/containers/account';
+import Menu from './app/containers/menu';
 import AddSandwich from './app/containers/addSandwich';
 import Login from './app/containers/login';
 

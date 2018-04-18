@@ -32,7 +32,7 @@ type State = {
     data: any
 }
 
-class Account extends Component<Props, State> {
+class Menu extends Component<Props, State> {
     state = {
         validation: false,
         loading: false,
@@ -128,7 +128,7 @@ function mapDispatchToProps(dispatch) {
 }
 
 // Connect everything
-let connection = connect(mapStateToProps, mapDispatchToProps)(Account);
+let connection = connect(mapStateToProps, mapDispatchToProps)(Menu);
 
 export default createContainer(() => {
     Meteor.subscribe('sandwiches');

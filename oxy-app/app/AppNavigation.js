@@ -6,12 +6,12 @@ import { Icon } from 'react-native-elements';
 import { StackNavigator, DrawerNavigator } from 'react-navigation';
 import Login from './containers/login';
 import Home from './containers/home';
-import Account from './containers/account';
+import Menu from './containers/menu';
 
 // drawer stack
 const DrawerStack = DrawerNavigator({
     'Accueil': { screen: Home },
-    'Compte': { screen: Account },
+    'Menu': { screen: Menu },
     'S\'identifier': { screen: Login }
 });
 
