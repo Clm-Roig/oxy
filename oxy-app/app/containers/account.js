@@ -49,7 +49,7 @@ class Account extends Component<Props, State> {
             );
         } else if(this.state.isShownBtn) {
             return (
-                <View style={{flex:1, backgroundColor: '#D3D3D3', paddingTop:20}}>
+                <View style={{flex:1, backgroundColor: '#D3D3D3'}}>
                     <Text>Hello World</Text>
                 </View>
             )

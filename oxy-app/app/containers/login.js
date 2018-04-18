@@ -39,7 +39,7 @@ class Login extends Component<Props, State> {
 
     render() {
         return (
-            <View style={{flex:1, backgroundColor: '#F5F5F5', paddingTop:20}}>
+            <View style={{flex:1, backgroundColor: '#F5F5F5'}}>
 
                 <Text style={Style.textBig}>
                     Bienvenue sur Oxy !
