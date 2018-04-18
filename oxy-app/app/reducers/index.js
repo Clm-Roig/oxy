@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux'
 
-import { ADD_SANDWICH } from "../actions/"
+import { ADD_SANDWICH } from "../actions/sandwichActions"
 import Meteor from 'react-native-meteor'
 
 let dataState = { data: [], loading:true }

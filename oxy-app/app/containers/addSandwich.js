@@ -13,7 +13,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import Meteor, { createContainer } from 'react-native-meteor';
 
-import * as Actions from '../actions';
+import * as Actions from '../actions/sandwichActions';
 import * as Style from '../assets/style';
 
 // ================================================================

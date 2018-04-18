@@ -17,7 +17,7 @@ import Meteor, { createContainer, MeteorListView } from 'react-native-meteor';
 
 import { MenuButton } from '../components/menuButton';
 
-import * as Actions from '../actions';
+import * as Actions from '../actions/sandwichActions';
 import * as Style from '../assets/style';
 
 // =============================================================
