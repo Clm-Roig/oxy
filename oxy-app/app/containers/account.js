@@ -47,8 +47,9 @@ class Account extends Component<Props, State> {
         this.setState({ isShownBtn: false });
     }
 
-    onPressSandwish = () => {
-        this.setState({ isShownBtn: false });
+    handlePressSandwich = () => {
+        console.log("OK");
+        this.setState({ isShownBtn: true });
     }
 
     render() {
@@ -58,7 +59,7 @@ class Account extends Component<Props, State> {
                     <ActivityIndicator animating={true}/>
                 </View>
             );
-        } else if(this.state.isShownBtn) {
+        } else if(!this.state.isShownBtn) {
             return (
                 <View style={{flex:1, backgroundColor: '#D3D3D3'}}>
                     <Text style={Style.title}>Faites votre choix</Text>
@@ -85,7 +86,7 @@ class Account extends Component<Props, State> {
     renderSandwich(sandwich) {
         return (
             <MenuButton
-            onPress={this.onPressAccount}
+            handler={this.handlePressSandwich}
             text={sandwich.name}
             />
         )
