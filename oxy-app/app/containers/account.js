@@ -27,14 +27,14 @@ type Props = {
 }
 
 type State = {
-    isShownBtn: boolean,
+    validation: boolean,
     loading: boolean,
     data: any
 }
 
 class Account extends Component<Props, State> {
     state = {
-        isShownBtn: true,
+        validation: false,
         loading: false,
         data: null
     }
@@ -43,13 +43,17 @@ class Account extends Component<Props, State> {
         super(props);
     }
 
-    onPressAccount = () => {
-        this.setState({ isShownBtn: false });
+    validateOrder = () => {
+        //TODO : Action addOrder(sandwich)
+    }
+
+    cancelOrder = () => {
+        this.setState({ validation: false });
     }
 
     handlePressSandwich = () => {
         console.log("OK");
-        this.setState({ isShownBtn: true });
+        this.setState({ validation: true });
     }
 
     render() {
@@ -59,7 +63,7 @@ class Account extends Component<Props, State> {
                     <ActivityIndicator animating={true}/>
                 </View>
             );
-        } else if(!this.state.isShownBtn) {
+        } else if(!this.state.validation) {
             return (
                 <View style={{flex:1, backgroundColor: '#D3D3D3'}}>
                     <Text style={Style.title}>Faites votre choix</Text>
@@ -72,11 +76,18 @@ class Account extends Component<Props, State> {
         } else {
             return (
                 <View style={{flex:1, backgroundColor: '#F5F5F5', paddingTop:50}}>
+                    <Text>Exemple de validation</Text>
                     <Button
-                        onPress={this.onPressAccount}
-                        title="Access the menu"
-                        color="#841584"
-                        accessibilityLabel="Learn more about this purple button"
+                        onPress={this.validateOrder}
+                        title="Validate your choice"
+                        color="#22FF22"
+                        accessibilityLabel="Product selected"
+                    />
+                    <Button
+                        onPress={this.cancelOrder}
+                        title="Cancel"
+                        color="#FF2222"
+                        accessibilityLabel="Product selected"
                     />
                 </View>
             );
@@ -85,10 +96,7 @@ class Account extends Component<Props, State> {
 
     renderSandwich(sandwich) {
         return (
-            <MenuButton
-            handler={this.handlePressSandwich}
-            text={sandwich.name}
-            />
+            <MenuButton handler={this.handlePressSandwich} text={sandwich.name} />
         )
     }
 
