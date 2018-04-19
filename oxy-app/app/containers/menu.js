@@ -17,13 +17,15 @@ import Meteor, { createContainer, MeteorListView } from 'react-native-meteor';
 
 import { MenuButton } from '../components/menuButton';
 
+
 import * as Actions from '../actions/sandwichActions';
 import * as Style from '../assets/style';
 
 // =============================================================
 
 type Props = {
-    count:number
+    count:number,
+    sandwiches: []
 }
 
 type State = {
@@ -43,8 +45,8 @@ class Menu extends Component<Props, State> {
         super(props);
     }
 
-    validateOrder = () => {
-        //TODO : Action addOrder(sandwich)
+    handleCreateOrder = () => {
+        //this.props.createOrder();
     }
 
     cancelOrder = () => {
@@ -52,8 +54,8 @@ class Menu extends Component<Props, State> {
     }
 
     handlePressSandwich = () => {
-        console.log("OK");
-        this.setState({ validation: true });
+        this.setState({ validation: false });
+        //this.props.createOrder();
     }
 
     render() {
@@ -96,7 +98,8 @@ class Menu extends Component<Props, State> {
 
     renderSandwich(sandwich) {
         return (
-            <MenuButton handler={this.handlePressSandwich} text={sandwich.name} />
+            <Button onPress={this.handleCreateOrder} title={sandwich.name} />
+            //<MenuButton handler={this.handleCreateOrder} text={sandwich.name} />
         )
     }
 
