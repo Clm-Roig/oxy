@@ -8,12 +8,14 @@ import { StackNavigator, DrawerNavigator } from 'react-navigation';
 import Login from './containers/login';
 import Home from './containers/home';
 import Menu from './containers/menu';
+import AddSandwich from './containers/addSandwich';
 
 // drawer stack
 const DrawerStack = DrawerNavigator({
     'Accueil': { screen: Home },
     'Menu': { screen: Menu },
-    'S\'identifier': { screen: Login }
+    'S\'identifier': { screen: Login },
+    'Ajouter un sandwich': { screen: AddSandwich }
 });
 
 const DrawerNavigation = StackNavigator({
@@ -39,7 +41,8 @@ const PrimaryNav = StackNavigator({
     drawerStack: { screen: DrawerNavigation },
     Accueil: { screen: Home },
     Menu: { screen: Menu },
-    Login : { screen: Login }
+    Login : { screen: Login },
+    AddSandwich : { screen: AddSandwich }
 }, {
     // Default config for all screens
     headerMode: 'none',
