@@ -7,18 +7,12 @@
     "babel-preset-flow": "^6.23.0",
     "flow-bin": "^0.69.0",
     "jest-expo": "26.0.0",
-    "react-native-scripts": "1.13.1",
     "react-test-renderer": "16.3.0-alpha.1"
   },
-  "main": "./node_modules/react-native-scripts/build/bin/crna-entry.js",
+  "main": "node_modules/expo/AppEntry.js",
   "scripts": {
-    "start": "react-native-scripts start",
-    "eject": "react-native-scripts eject",
     "flow": "flow",
-    "android": "react-native-scripts android",
-    "ios": "react-native-scripts ios",
     "test": "jest",
-    "build": "babel app/ -d lib/",
     "prepublish": "npm run build"
   },
   "jest": {
