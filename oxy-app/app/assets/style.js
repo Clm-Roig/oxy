@@ -1,7 +1,8 @@
 export const button = {
     alignItems: 'center',
-    backgroundColor: '#66e',
-    height: 80
+    backgroundColor: '#e66',
+    height: 80,
+    margin: 10
 }
 
 export const textBig = {
