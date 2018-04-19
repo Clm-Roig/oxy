@@ -13,7 +13,8 @@
   "scripts": {
     "flow": "flow",
     "test": "jest",
-    "prepublish": "npm run build"
+    "prepublish": "npm run build",
+    "build": "babel app/ -d lib/"
   },
   "jest": {
     "preset": "jest-expo"
