@@ -11,7 +11,6 @@ Meteor.methods({
         return Sandwiches.remove({});
     },
     'Sandwiches.delete': (sandwich) => {
-        console.log(sandwich);
         return Sandwiches.remove({_id: sandwich._id});
     },
 });
