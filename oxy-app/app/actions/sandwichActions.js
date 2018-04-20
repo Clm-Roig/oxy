@@ -19,6 +19,18 @@ export function addSandwich(){
     };
 }
 
+export function ajoutSandwich(name){
+    return (dispatch) => {
+        const data  = "SandwichData";
+        dispatch({type: ADD_SANDWICH, data:data});
+
+        // CALL API
+        Meteor.call('Sandwiches.addOne', { name }, (err, res) => {
+            console.log('Sandwiches.addOne', err, res);
+        });
+    };
+}
+
 export function deleteSandwiches(){
     return (dispatch) => {
         const data  = '';

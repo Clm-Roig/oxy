@@ -30,18 +30,40 @@ type State = {
 class AddSandwich extends Component<Props, State> {
     constructor(props) {
         super(props);
+
+        this.state = {
+            name: '',
+            errorMsg: ''
+        };
     }
 
     componentDidMount() {
 
     }
 
+    handleAddItem = () => {
+        if (this.state.name != '') {
+            this.props.ajoutSandwich(this.state.name);
+        } else {
+            this.setState({errorMsg: 'Entrez un nom pour créer un nouveau sandwich'})
+        }
+        
+    }
+
+    setName(name) {
+        this.setState({name});
+    }
+
     render() {
         return (
             <View style={{flex:1, backgroundColor: '#F5F5F5'}}>
                 <FormLabel>Name</FormLabel>
-                <FormInput onChangeText={console.log("Coucou")}/>
-                <FormValidationMessage>Error message</FormValidationMessage>
+                <FormInput 
+                    onChangeText={(name) => this.setName(name)}
+                    value = {this.state.name}
+                />
+                <FormValidationMessage>{this.state.errorMsg}</FormValidationMessage>
+                <MyButton handler={this.handleAddItem} text='Ajouter un sandwich' />
             </View>
         );
     }
