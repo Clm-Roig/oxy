@@ -10,10 +10,10 @@ Meteor.methods({
     'Sandwiches.deleteAll': () => {
         return Sandwiches.remove({});
     },
-    'Sandwiches.delete': ({ sandwich }) => {
-        return Sandwiches.remove({ sandwich });
+    'Sandwiches.delete': (sandwich) => {
+        console.log(sandwich);
+        return Sandwiches.remove({_id: sandwich._id});
     },
-
 });
 
 Meteor.publish('sandwiches', () => {

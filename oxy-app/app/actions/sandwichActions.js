@@ -16,7 +16,6 @@ export function addSandwich(){
         Meteor.call('Sandwiches.addOne', { name }, (err, res) => {
             console.log('Sandwiches.addOne', err, res);
         });
-        console.log("Sandwich inserted");
     };
 }
 
@@ -29,19 +28,17 @@ export function deleteSandwiches(){
         Meteor.call('Sandwiches.deleteAll', { data }, (err, res) => {
             console.log('Sandwiches.deleteAll', err, res);
         });
-        console.log("Sandwiches deleted");
     };
 }
 
 export function deleteSandwich(sandwich){
     return (dispatch) => {
-        const data  = sandwich;
-        dispatch({type: DELETE_SANDWICH, data:data});
+        dispatch({type: DELETE_SANDWICH, data: sandwich});
 
         // CALL API
-        Meteor.call('Sandwiches.delete', { data }, (err, res) => {
+        Meteor.call('Sandwiches.delete', sandwich, (err, res) => {
             console.log('Sandwiches.delete', err, res);
         });
-        console.log("Sandwiche deleted");
+
     };
 }
