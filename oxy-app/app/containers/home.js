@@ -42,6 +42,10 @@ class Home extends Component<Props, State> {
         this.props.deleteSandwiches();
     }
 
+    handleDeleteSandwich = () => {
+
+    }
+
     render() {
         var count = 0;
         if(this.props.sandwiches != null) {
@@ -50,8 +54,8 @@ class Home extends Component<Props, State> {
         return (
             <View style={{flex:1, backgroundColor: '#F5F5F5'}}>
 
-            <MyButton handler={this.handleAddItem} text='Add Sandwich' />
-            <MyButton handler={this.handleDeleteSandwiches} text='Delete all Sandwiches' />
+            <MyButton handler={this.handleAddItem} text='Ajouter un sandwich aléatoire' />
+            <MyButton handler={this.handleDeleteSandwiches} text='Supprimer tout' />
 
             <Text style={Style.textBig}>
             Nb de sandwichs: {count}
@@ -68,7 +72,12 @@ class Home extends Component<Props, State> {
 
     renderSandwich(sandwich) {
         return (
-            <Text>{sandwich.name}</Text>
+            <View style={{marginBottom:10}}>
+                <Text>{sandwich._id} - {sandwich.name}</Text>
+                <TouchableOpacity onPress = {this.handleDeleteSandwich}>
+                    <Text style= {{color:'#e55'}} >Supprimer</Text>
+                </TouchableOpacity>
+            </View>
         )
     }
 };
