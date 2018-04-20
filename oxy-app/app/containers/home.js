@@ -42,8 +42,9 @@ class Home extends Component<Props, State> {
         this.props.deleteSandwiches();
     }
 
-    handleDeleteSandwich = () => {
-
+    handleDeleteSandwich(sandwich) {
+        console.log('Dans handleDelete')
+        this.props.deleteSandwich(sandwich);
     }
 
     render() {
@@ -74,8 +75,8 @@ class Home extends Component<Props, State> {
         return (
             <View style={{marginBottom:10}}>
                 <Text>{sandwich._id} - {sandwich.name}</Text>
-                <TouchableOpacity onPress = {this.handleDeleteSandwich}>
-                    <Text style= {{color:'#e55'}} >Supprimer</Text>
+                <TouchableOpacity onPress={ () => this.handleDeleteSandwich(sandwich)}>
+                    <Text style = {{backgroundColor:'#e55', fontSize:16, padding:10, textAlign:'center'}}>Supprimer</Text>
                 </TouchableOpacity>
             </View>
         )

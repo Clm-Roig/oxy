@@ -9,7 +9,11 @@ Meteor.methods({
     },
     'Sandwiches.deleteAll': () => {
         return Sandwiches.remove({});
-    }
+    },
+    'Sandwiches.delete': ({ sandwich }) => {
+        return Sandwiches.remove({ sandwich });
+    },
+
 });
 
 Meteor.publish('sandwiches', () => {

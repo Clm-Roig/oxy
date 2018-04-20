@@ -1,6 +1,6 @@
 export const button = {
     alignItems: 'center',
-    backgroundColor: '#e66',
+    backgroundColor: '#88e',
     height: 80,
     margin: 10
 }
