@@ -43,7 +43,7 @@ class Home extends Component<Props, State> {
     }
 
     handleDeleteSandwich(sandwich) {
-        console.log('Dans handleDelete')
+        console.log('Dans handleDelete');
         this.props.deleteSandwich(sandwich);
     }
 
