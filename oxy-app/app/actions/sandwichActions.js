@@ -5,6 +5,7 @@ import Meteor from 'react-native-meteor'
 export const ADD_SANDWICH = 'ADD_SANDWICH';
 export const DELETE_SANDWICHES = 'DELETE_SANDWICHES';
 export const DELETE_SANDWICH = 'DELETE_SANDWICH';
+export const ADD_SANDWICH_WITH_NAME = 'ADD_SANDWICH_WITH_NAME';
 
 export function addSandwich(){
     return (dispatch) => {
@@ -19,10 +20,10 @@ export function addSandwich(){
     };
 }
 
-export function ajoutSandwich(name){
+export function addSandwichWithName(name){
     return (dispatch) => {
-        const data  = "SandwichData";
-        dispatch({type: ADD_SANDWICH, data:data});
+        const data  = name;
+        dispatch({type: ADD_SANDWICH_WITH_NAME, data:data});
 
         // CALL API
         Meteor.call('Sandwiches.addOne', { name }, (err, res) => {

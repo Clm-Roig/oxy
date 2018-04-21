@@ -2,7 +2,6 @@
 import React, { Component } from 'react';
 import {
     StyleSheet,
-    FlatList,
     View,
     Text,
     TouchableOpacity
@@ -11,20 +10,18 @@ import {
 import { MyButton } from '../components/myButton';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import Meteor, { createContainer, MeteorListView } from 'react-native-meteor';
 import { FormLabel, FormInput, FormValidationMessage } from 'react-native-elements'
 
-import { withNavigation } from 'react-navigation';
-
 import * as Actions from '../actions/sandwichActions';
-import * as Style from '../assets/style';
 
 // ================================================================
 type Props = {
 }
 
 type State = {
-
+    name: string,
+    errorMsg: string,
+    validationMsg: string
 }
 
 class AddSandwich extends Component<Props, State> {
@@ -33,7 +30,8 @@ class AddSandwich extends Component<Props, State> {
 
         this.state = {
             name: '',
-            errorMsg: ''
+            errorMsg: '',
+            validationMsg: ''
         };
     }
 
@@ -43,27 +41,38 @@ class AddSandwich extends Component<Props, State> {
 
     handleAddItem = () => {
         if (this.state.name != '') {
-            this.props.ajoutSandwich(this.state.name);
+            // TODO : checker la valeur retourner pour savoir si ça a marché ou pas.
+            this.props.addSandwichWithName(this.state.name);
+            this.setState({
+                name: '',
+                validationMsg: 'Sandwich ajouté !'
+            });
+            setTimeout(() => {
+                this.setState({
+                    validationMsg: ''
+                });
+            }, 2000);
         } else {
             this.setState({errorMsg: 'Entrez un nom pour créer un nouveau sandwich'})
         }
-        
     }
 
     setName(name) {
-        this.setState({name});
+        this.setState({name: name});
     }
 
     render() {
         return (
             <View style={{flex:1, backgroundColor: '#F5F5F5'}}>
-                <FormLabel>Name</FormLabel>
-                <FormInput 
-                    onChangeText={(name) => this.setName(name)}
-                    value = {this.state.name}
+                <FormLabel>Nom du sandwich</FormLabel>
+                <FormInput
+                onChangeText={(name) => this.setName(name)}
+                value = {this.state.name}
                 />
                 <FormValidationMessage>{this.state.errorMsg}</FormValidationMessage>
                 <MyButton handler={this.handleAddItem} text='Ajouter un sandwich' />
+
+                <Text style={{color:'#5c5'}}>{this.state.validationMsg}</Text>
             </View>
         );
     }
@@ -88,5 +97,4 @@ function mapDispatchToProps(dispatch) {
 }
 
 // Connect everything
-let connection = connect(mapStateToProps, mapDispatchToProps)(AddSandwich);
-export default withNavigation(connection);
+export default connect(mapStateToProps, mapDispatchToProps)(AddSandwich);

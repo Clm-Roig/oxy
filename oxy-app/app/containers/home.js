@@ -73,7 +73,7 @@ class Home extends Component<Props, State> {
     renderSandwich = (sandwich) => {
         return (
             <View style={{marginBottom:10}}>
-                <Text>{sandwich._id} - {sandwich.name}</Text>
+                <Text>{sandwich.name}</Text>
                 <TouchableOpacity onPress={() => this.handleDeleteSandwich(sandwich)}>
                     <Text style = {{backgroundColor:'#e55', fontSize:16, padding:10, textAlign:'center'}}>Supprimer</Text>
                 </TouchableOpacity>
