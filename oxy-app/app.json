@@ -2,15 +2,10 @@
   "expo": {
     "sdkVersion": "26.0.0",
     "android": {
-      "package": "koovea"
+      "package": "oxy"
     },
     "name": "oxy-app",
     "slug": "oxy-app",
-    "version": "0.1.0",
-    "isDetached": true,
-    "detach": {
-      "scheme": "expf32c245bad444fbebd6ab4f2ce1db212",
-      "androidExpoViewUrl": "https://s3.amazonaws.com/exp-exponent-view-code/android-v2.4.0-sdk26.0.0-e63d9209-070c-4118-b06b-c60e82da0b66.tar.gz"
-    }
+    "version": "0.1.0"
   }
 }
